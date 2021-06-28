@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -22,6 +23,7 @@ public class Program extends Application {
     private Set<Lift> lifts = new HashSet<>();
     private Map<Exercise, Set<Lift>> liftsByExercise = new TreeMap<>();
     private Map<Date, List<Lift>> liftsByDate = new TreeMap<>();
+    private Stage stage;
 
     @Override
     public void start(Stage stage) {
@@ -85,7 +87,7 @@ public class Program extends Application {
 
         stage.setScene(new Scene(root));
         stage.sizeToScene();
-        stage.setTitle("Träningsdagbok");
+        stage.setTitle("Workout Tracker");
         stage.setOnCloseRequest(new ExitTopHandler());
         stage.show();
     }
@@ -154,11 +156,22 @@ public class Program extends Application {
         }
     }
 
+    //TODO needs more testing
     class SaveHandler implements EventHandler<ActionEvent>{
         @Override public void handle(ActionEvent event){
             try {
-                //TODO change to choosing file
-                String fileName = "/Users/josefinrahm/Documents/Träning/Träningsdagbok.txt";
+                //TODO duplicated code, make method
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save Workouts");
+                fileChooser.setInitialDirectory(new File("C:/"));
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                        new FileChooser.ExtensionFilter("All files", "*.*")
+                );
+                File file = fileChooser.showOpenDialog(stage);
+                if (file == null)
+                    return;
+                String fileName = file.getAbsolutePath();
                 FileWriter outfile = new FileWriter(fileName);
                 PrintWriter out = new PrintWriter(outfile);
                 for (Lift lift : lifts){
@@ -282,7 +295,17 @@ public class Program extends Application {
 
     private void getLifts() {
         try {
-            String fileName = "/Users/josefinrahm/Documents/Träning/Träningsdagbok.txt";
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Saved Workouts");
+            fileChooser.setInitialDirectory(new File("C:/"));
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                    new FileChooser.ExtensionFilter("All files", "*.*")
+            );
+            File file = fileChooser.showOpenDialog(stage);
+            if (file == null)
+                return;
+            String fileName = file.getAbsolutePath();
             FileReader infile = new FileReader(fileName);
             BufferedReader in = new BufferedReader(infile);
             String line;
