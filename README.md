@@ -20,7 +20,7 @@ Creates a new lift. Exercise needs to be choosen in the right panel. Fill in set
 (yyyy-mm-dd) in the pop-up.
 
 #### Show
-Shows all lift regardless of exercise choosen in the right panel.
+Shows all lifts regardless of exercise choosen in the right panel.
 
 #### Calculate Total
 Calculates powerlifting total; squat+bench press+deadlift.
