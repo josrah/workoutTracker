@@ -4,8 +4,11 @@ instead of changing the code, there may be som bugs when saving workout*
 
 ## Introduction
 Since I like to lift weights, I decided to make this program to practice JavaFX and data collections for the 
-course PROG2 @ Stockholm University. This is more of a hobby project and has not been tested by anyone else 
-than me.
+course PROG2 @ Stockholm University. This is a hobby project and has not been tested by anyone else than me. 
+The program was first customized to only work on my computer with a predetermined text document, and I have 
+not spent that much time on adjusting the code since syncing the repository with github. Other concepts in the 
+code may also be unfinished/unnecessary, since the main focus for me in this project was practising basic concepts 
+of Java without introducing too many libraries.
 
 ## How to use
 The program starts by reading a textfile choosen by the user with lifts. The display will be empty at first.
