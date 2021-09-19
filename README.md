@@ -39,4 +39,5 @@ Calculates one rep max for choosen exercise.
 
 #### Loading text file
 The lifts in text file needs to have the format date,exercise,sets,reps,weight to be read by the program.
+
 Example: 2020-7-6,Squat,1,5,70.0
